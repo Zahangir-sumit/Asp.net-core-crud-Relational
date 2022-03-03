@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Asp_Core_Crud_Relational.Models.Departments>
+
+@{
+    ViewData["Title"] = "Departments";
+}
+
+<h1>Departments</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Department)
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Create", new {  id=item.ID, item.Department }, new { @class="btn btn-primary" }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }, new { @class="btn btn-success" }) |
+                @Html.ActionLink("Delete", "Deletedpt", new {  id=item.ID  }, new {  @class="btn btn-danger", onclick="return confirm('Do you really want to delete this record?')" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
